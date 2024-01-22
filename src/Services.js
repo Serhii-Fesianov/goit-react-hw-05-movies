@@ -16,8 +16,31 @@ export const getAllMovies = async () => {
   return data;
 };
 
+export const searchMovies = async query => {
+  const { data } = await axiosInstance.get('search/movie', {
+    params: { query: query },
+  });
+  return data;
+};
+
 export const getOneFilm = async id => {
   console.log(id);
   const { data } = await axiosInstance.get(`movie/${id}?language=en-US`);
   return data;
+};
+
+export const getOneCast = async id => {
+  const { data } = await axiosInstance.get(
+    `movie/${id}/credits?language=en-US`
+  );
+
+  return data.cast;
+};
+
+export const getReviews = async id => {
+  const { data } = await axiosInstance.get(
+    `movie/${id}/reviews?language=en-US`
+  );
+
+  return data.results;
 };

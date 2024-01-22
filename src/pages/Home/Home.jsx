@@ -1,7 +1,12 @@
-import styled from 'styled-components';
 import { getAllMovies } from 'Services';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import {
+  StyledItemMovies,
+  StyledLinkHome,
+  StyledMovies,
+  StyledUlMovies,
+  Wrapper,
+} from './Home.styled';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -11,41 +16,17 @@ export const Home = () => {
 
   console.log(movies);
   return (
-    <>
+    <Wrapper>
       <StyledMovies>Tranding</StyledMovies>
       <StyledUlMovies>
         {movies.map(movie => (
           <StyledItemMovies key={movie.id}>
-            <StyledLink to={'movies/' + movie.id.toString()}>
+            <StyledLinkHome to={'movies/' + movie.id.toString()}>
               {movie.title}
-            </StyledLink>
+            </StyledLinkHome>
           </StyledItemMovies>
         ))}
       </StyledUlMovies>
-    </>
+    </Wrapper>
   );
 };
-
-export const StyledMovies = styled.h1`
-  font-size: 25px;
-  margin: 0;
-`;
-
-export const StyledHome = styled.h1`
-  font-size: 25px;
-  margin: 0;
-`;
-
-export const StyledUlMovies = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const StyledItemMovies = styled.li`
-  text-align: center;
-`;
-
-export const StyledLink = styled(Link)`
-  margin: 0;
-`;

@@ -17,7 +17,7 @@ export const StyledNav = styled.nav`
 `;
 
 export const StyledLink = styled(NavLink)`
-  color: white;
+  color: whitesmoke;
   font-size: calc((1vh+1vw) * 1.5);
   font-weight: bold;
   text-decoration: none;
