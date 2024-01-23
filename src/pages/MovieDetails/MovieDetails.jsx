@@ -1,12 +1,6 @@
 import { getOneFilm } from 'Services';
 import React, { useEffect, useState } from 'react';
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useParams,
-  useSearchParams,
-} from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import {
   Box,
   ImgDetails,
@@ -18,7 +12,7 @@ import {
   Title,
 } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { moviesId } = useParams();
   const back = useLocation();
 
@@ -61,3 +55,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;

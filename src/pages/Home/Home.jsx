@@ -8,7 +8,7 @@ import {
   Wrapper,
 } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     getAllMovies().then(response => setMovies(response.results));
@@ -30,3 +30,5 @@ export const Home = () => {
     </Wrapper>
   );
 };
+
+export default Home;

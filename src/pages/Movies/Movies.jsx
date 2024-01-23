@@ -6,20 +6,19 @@ import {
   StyledWrapperMovie,
 } from './Movies.styled';
 import { searchMovies } from 'Services';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { MoviesUl } from 'components/MoviesUl/MoviesUl';
 
-export const Movies = () => {
+const Movies = () => {
   const [movie, setMovie] = useState({});
-  const [searchParams, setSearchParams] = useSearchParams('');
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useSearchParams('');
 
   const handleSubmit = async event => {
     event.preventDefault();
     const { results } = await searchMovies(query);
     setMovie(results);
-    setSearchParams(`query=${query}`);
+    setQuery(`query=${query}`);
   };
-  const location = useLocation();
 
   return (
     <>
@@ -29,16 +28,9 @@ export const Movies = () => {
           <StyleButton type="submit">Search</StyleButton>
         </StyledForm>
       </StyledWrapperMovie>
-      <ul>
-        {movie.length > 0 &&
-          movie.map(film => (
-            <li key={film.id}>
-              <Link state={{ from: location }} to={`/movies/${film.id}`}>
-                {film.original_title}{' '}
-              </Link>
-            </li>
-          ))}
-      </ul>
+      <MoviesUl movie={movie} />
     </>
   );
 };
+
+export default Movies;

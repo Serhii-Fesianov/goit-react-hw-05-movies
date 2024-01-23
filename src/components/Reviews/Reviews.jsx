@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { getReviews } from 'Services';
 import { useParams } from 'react-router-dom';
-import { Info, SmallTitle } from './Reviews.styled';
+import { ReviewsUl } from 'components/ReviewsUl/ReviewsUl';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { moviesId } = useParams();
   const [reviews, setReviews] = useState([]);
 
@@ -14,15 +14,10 @@ export const Reviews = () => {
       .catch(error => console.log(error));
   }, [moviesId]);
   return (
-    <ul>
-      {reviews.map(review => {
-        return (
-          <li key={review.id}>
-            <SmallTitle>Author:{review.author}</SmallTitle>
-            <Info>{review.content}</Info>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      {reviews.length > 0 ? <ReviewsUl reviews={reviews} /> : <p>No reviews</p>}
+    </>
   );
 };
+
+export default Reviews;
