@@ -1,7 +1,7 @@
 import { getOneCast } from 'Services';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Info, SmallHead } from './Cast.styled';
+import { Info, SmallHead, StyledItemCast, StyledListCast } from './Cast.styled';
 
 const Cast = () => {
   const { moviesId } = useParams();
@@ -14,12 +14,12 @@ const Cast = () => {
       .then(response => setCast(response))
       .catch(error => console.log(error));
   }, [moviesId]);
-  console.log(cast);
+
   return (
-    <ul>
+    <StyledListCast>
       {cast.map(item => {
         return (
-          <li key={item.id}>
+          <StyledItemCast key={item.id}>
             <img
               src={
                 item.profile_path
@@ -31,10 +31,10 @@ const Cast = () => {
             />
             <SmallHead>{item.name}</SmallHead>
             <Info>Character:{item.character}</Info>
-          </li>
+          </StyledItemCast>
         );
       })}
-    </ul>
+    </StyledListCast>
   );
 };
 

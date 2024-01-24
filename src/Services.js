@@ -24,7 +24,6 @@ export const searchMovies = async query => {
 };
 
 export const getOneFilm = async id => {
-  console.log(id);
   const { data } = await axiosInstance.get(`movie/${id}?language=en-US`);
   return data;
 };

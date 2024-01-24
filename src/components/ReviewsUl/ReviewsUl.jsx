@@ -1,17 +1,18 @@
 import { Info, SmallTitle } from 'components/Reviews/Reviews.styled';
 import React from 'react';
+import { StyledItemReviews, StyledUlReviews } from './ReviewsUl.styled';
 
 export const ReviewsUl = ({ reviews }) => {
   return (
-    <ul>
+    <StyledUlReviews>
       {reviews.map(review => {
         return (
-          <li key={review.id}>
+          <StyledItemReviews key={review.id}>
             <SmallTitle>Author:{review.author}</SmallTitle>
             <Info>{review.content}</Info>
-          </li>
+          </StyledItemReviews>
         );
       })}
-    </ul>
+    </StyledUlReviews>
   );
 };

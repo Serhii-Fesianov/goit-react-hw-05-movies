@@ -2,10 +2,14 @@ import styled from 'styled-components';
 
 export const StyledWrapperMovie = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledForm = styled.form`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
   background-color: bisque;

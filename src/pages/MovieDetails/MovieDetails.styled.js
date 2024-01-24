@@ -50,15 +50,26 @@ export const ListLink = styled.ul`
   list-style: none;
 `;
 
+export const StyledItemDetails = styled.li`
+  margin: 20px 10px;
+`;
+
 export const StyledLinkMovies = styled(Link)`
-  color: blue;
-  font-size: calc((1vh+1vw) * 1.5);
-  font-weight: bold;
+  width: 100px;
+  height: 25px;
+  margin: 10px 5px;
   text-decoration: none;
-  &.active {
-    color: #5e5c5c;
+  font-size: 20px;
+  color: navy;
+  box-shadow: 1px 2px 2px 1px;
+  border: 1px solid navy;
+  border-radius: 5px;
+  &:hover {
+    color: green;
+    background-color: whitesmoke;
   }
-  &:hover:not(.active) {
-    color: black;
+  &:active {
+    color: green;
+    background-color: whitesmoke;
   }
 `;

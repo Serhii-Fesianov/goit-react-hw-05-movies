@@ -1,6 +1,6 @@
 import { getOneFilm } from 'Services';
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import {
   Box,
   ImgDetails,
@@ -8,6 +8,7 @@ import {
   ListLink,
   SmallHead,
   SmallTitle,
+  StyledItemDetails,
   StyledLinkMovies,
   Title,
 } from './MovieDetails.styled';
@@ -31,7 +32,10 @@ const MovieDetails = () => {
       {film && (
         <section>
           <Box>
-            <Link to={back.state ? back.state.from : '/'}> Back</Link>
+            <StyledLinkMovies to={back.state ? back.state.from : '/'}>
+              {' '}
+              Back
+            </StyledLinkMovies>
             <ImgDetails
               src={
                 film.poster_path
@@ -47,12 +51,12 @@ const MovieDetails = () => {
             <SmallHead>Genres</SmallHead>
             <Info>{film.genres.map(genre => genre.name).join(', ')}</Info>
             <ListLink>
-              <li>
+              <StyledItemDetails>
                 <StyledLinkMovies to="cast">Cast</StyledLinkMovies>
-              </li>
-              <li>
+              </StyledItemDetails>
+              <StyledItemDetails>
                 <StyledLinkMovies to="reviews">Reviews</StyledLinkMovies>
-              </li>
+              </StyledItemDetails>
             </ListLink>
           </Box>
           <Outlet />

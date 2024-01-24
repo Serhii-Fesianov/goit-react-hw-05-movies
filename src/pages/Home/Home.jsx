@@ -10,7 +10,6 @@ const Home = () => {
     getAllMovies().then(response => setMovies(response.results));
   }, []);
 
-  console.log(movies);
   return (
     <Wrapper>
       <StyledMovies>Tranding</StyledMovies>
