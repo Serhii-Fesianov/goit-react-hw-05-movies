@@ -6,6 +6,8 @@ import { Info, SmallHead } from './Cast.styled';
 const Cast = () => {
   const { moviesId } = useParams();
   const [cast, setCast] = useState([]);
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
     getOneCast(moviesId)
@@ -19,7 +21,11 @@ const Cast = () => {
         return (
           <li key={item.id}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
+              src={
+                item.profile_path
+                  ? `https://image.tmdb.org/t/p/w500${item.profile_path}`
+                  : defaultImg
+              }
               alt={item.name}
               width={150}
             />

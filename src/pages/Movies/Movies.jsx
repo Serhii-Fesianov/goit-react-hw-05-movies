@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Input,
   StyleButton,
@@ -7,28 +7,37 @@ import {
 } from './Movies.styled';
 import { searchMovies } from 'Services';
 import { useSearchParams } from 'react-router-dom';
-import { MoviesUl } from 'components/MoviesUl/MoviesUl';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
-  const [movie, setMovie] = useState({});
-  const [query, setQuery] = useSearchParams('');
+  const [movie, setMovie] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams('');
+
+  useEffect(() => {
+    const query = searchParams.get('query');
+    if (!query) {
+      return;
+    }
+    searchMovies(query).then(({ results }) => {
+      setMovie(results);
+    });
+  }, [searchParams]);
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const { results } = await searchMovies(query);
-    setMovie(results);
-    setQuery(`query=${query}`);
+
+    setSearchParams({ query: event.target.elements.query.value });
   };
 
   return (
     <>
       <StyledWrapperMovie>
         <StyledForm onSubmit={handleSubmit}>
-          <Input type="text" onChange={e => setQuery(e.target.value)} />
+          <Input type="text" name="query" />
           <StyleButton type="submit">Search</StyleButton>
         </StyledForm>
       </StyledWrapperMovie>
-      <MoviesUl movie={movie} />
+      <MoviesList movie={movie} />
     </>
   );
 };

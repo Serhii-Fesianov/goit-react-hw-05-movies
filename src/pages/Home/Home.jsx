@@ -1,12 +1,8 @@
 import { getAllMovies } from 'Services';
 import React, { useEffect, useState } from 'react';
-import {
-  StyledItemMovies,
-  StyledLinkHome,
-  StyledMovies,
-  StyledUlMovies,
-  Wrapper,
-} from './Home.styled';
+
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { StyledMovies, Wrapper } from './Home.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -18,15 +14,11 @@ const Home = () => {
   return (
     <Wrapper>
       <StyledMovies>Tranding</StyledMovies>
-      <StyledUlMovies>
-        {movies.map(movie => (
-          <StyledItemMovies key={movie.id}>
-            <StyledLinkHome to={'movies/' + movie.id.toString()}>
-              {movie.title}
-            </StyledLinkHome>
-          </StyledItemMovies>
-        ))}
-      </StyledUlMovies>
+      {movies.length > 0 ? (
+        <MoviesList movie={movies} />
+      ) : (
+        <h2>Sorry any films not found</h2>
+      )}
     </Wrapper>
   );
 };

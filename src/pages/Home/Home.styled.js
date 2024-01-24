@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -30,23 +29,5 @@ export const StyledUlMovies = styled.ul`
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 0;
-`;
-
-export const StyledItemMovies = styled.li`
-  text-align: center;
-`;
-
-export const StyledLinkHome = styled(Link)`
-  color: blue;
-  font-size: calc((1vh+1vw) * 1.5);
-  font-weight: bold;
-  text-decoration: none;
-  &.active {
-    color: #5e5c5c;
-  }
-  &:hover:not(.active) {
-    color: black;
-  }
   margin: 0;
 `;

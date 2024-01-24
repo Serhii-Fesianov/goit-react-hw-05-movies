@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { NavBar } from './NavBar';
-import styled from 'styled-components';
+import { StyledHeader, StyledOutletWrapper } from './Layout.styled';
 
 export const Layout = () => {
   return (
@@ -18,18 +18,3 @@ export const Layout = () => {
     </>
   );
 };
-
-export const StyledHeader = styled.header`
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  background-color: #d08955;
-  color: whitesmoke;
-`;
-
-export const StyledOutletWrapper = styled.div`
-  padding: 0 15px;
-`;

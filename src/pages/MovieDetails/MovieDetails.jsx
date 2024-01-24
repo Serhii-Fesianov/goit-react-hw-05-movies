@@ -13,6 +13,8 @@ import {
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   const { moviesId } = useParams();
   const back = useLocation();
 
@@ -31,7 +33,11 @@ const MovieDetails = () => {
           <Box>
             <Link to={back.state ? back.state.from : '/'}> Back</Link>
             <ImgDetails
-              src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+              src={
+                film.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${film.poster_path}`
+                  : defaultImg
+              }
               alt={film.title}
             />
             <Title>{film.title}</Title>
